@@ -1,0 +1,26 @@
+---
+title: "README: run_analysis.R"
+output: html_document
+---
+
+run_analysis.R uses the UCI HAR dataset provided at: 
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+A full description of the data set can be found here:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+run_analysis.R loads in the following files from the dataset
+
+- features.txt
+- activity_labels.txt
+- subject_train.txt
+- subject_test.txt
+- X_train.txt
+- X_test.txt
+- y_train.txt
+- y_text.txt
+
+The user must specify the directory in the beginning of the script. After specifying the directory, the script cleans and processes the data into columns containing only mean and standard deviation. The script outputs two files:
+
+1. cleaned_data.txt: data set containing only variables with mean or std, for all activity_labels and subjects.
+2. tiny_data.txt: reduced dataset containing the mean or std, for each activity_label and subject combination.

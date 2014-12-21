@@ -1,0 +1,33 @@
+---
+title: "Code Book"
+output: html_document
+---
+
+run_analysis.R uses the UCI HAR dataset provided at: 
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+A full description of the data set can be found here:
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+The columns are renamed in the following format: "descDIREC.quant", where desc is something like "tBodyAcc" or "fBodyGyro". Direc is X, Y, Z, or mag. quant is mean or std. This produces the following:
+
+```{r, echo=FALSE}
+names=read.table("~/tiny_data.txt")
+subject=names[,1]
+names=names[,-1]
+activity=names[,1]
+names=names[-1]
+```
+
+```{r}
+names=colnames(names)
+names
+```
+
+The subjects are integers, 1-30. The activity_labels are
+
+```{r}
+levels(activity)
+```
+
+Before pruning but after merging the train and test data, X is a 10299x561 data frame. After selecting out the mean and std data, it is a 10299x66 data frame. Including subject and activity_label columns, it is a 10299x68 data frame, and stored as cleaned_data.txt. After it is reduced to just means of each combination of subject and activity_label, it is a 180x68 data frame, and outputted to tiny_data.txt.
